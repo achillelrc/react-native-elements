@@ -34,7 +34,28 @@ describe('Card Component', () => {
     expect(toJson(component)).toMatchSnapshot();
   });
 
-  it('should have Card title with image', () => {
+  it('should have Card title with image pressable with grey overlay on press', () => {
+    const component = shallow(
+      <Card
+        theme={theme}
+        title="HELLO WORLD"
+        image={{
+          uri:
+            'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+        }}
+        containerStyle={{ backgroundColor: 'red' }}
+        titleStyle={{ backgroundColor: 'red' }}
+        fontFamily="arial"
+        imageOnPress={() => {console.log('oh my')}}
+        imageOnPressProps={{underlayColor: 'rgba(42, 42, 42, 0.42)'}}
+      />
+    );
+
+    expect(component.length).toBe(1);
+    expect(toJson(component)).toMatchSnapshot();
+  });
+  
+  it('should have Card title with image and a Toucha', () => {
     const component = shallow(
       <Card
         theme={theme}
